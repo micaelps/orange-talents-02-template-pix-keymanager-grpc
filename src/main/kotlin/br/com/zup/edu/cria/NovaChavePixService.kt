@@ -35,6 +35,7 @@ class NovaChavePixService(
        val bcbResponse = chave
             .let(repository::save)
             .let(CriaChavePixRequest::of)
+           .also { criaChavePixRequest -> println(criaChavePixRequest) }
             .let(bcbClient::create)
             .also { logger.info("Chave Pix criada com sucesso.") }
 
@@ -47,7 +48,7 @@ class NovaChavePixService(
 
     fun buscaContaItau(chavePixValidavel: ChavePixValidavel): ContaAssociada {
         val response = itauClient.buscaContaPorTipo(chavePixValidavel.clienteId!!, chavePixValidavel.tipoConta!!.name)
-        return response.body()?.toModel() ?: throw IllegalStateException("Cliente não encontrado no Itau")
+        return response.body()?.toModel() ?: throw IllegalStateException("Cliente não encontrado no Itau.")
     }
 
     fun validaChave(chavePixValidavel: ChavePixValidavel): ChavePixValidavel {
