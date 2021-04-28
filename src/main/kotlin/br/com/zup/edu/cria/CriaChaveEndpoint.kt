@@ -26,12 +26,12 @@ class CriaChavePixEndpoint(@Inject val service: NovaChavePixService) : CriaNovaC
 
     fun montaResponse(chavePix: ChavePix):NovaChavePixResponse{
         return NovaChavePixResponse.newBuilder()
-            .setClientId(chavePix.clienteId.toString())
-            .setPixId(chavePix.chave)
+            .setClienteId(chavePix.clienteId.toString())
+            .setPixId(chavePix.id.toString())
             .build()
     }
 }
 
 private fun NovaChavePixRequest.toChavePixValidavel(): ChavePixValidavel {
-    return ChavePixValidavel(this.clientID, TipoChave.valueOf(this.tipoDeChave.name), this.chave, TipoConta.valueOf( this.tipoDeConta.name))
+    return ChavePixValidavel(this.clienteID, TipoChave.valueOf(this.tipoDeChave.name), this.chave, TipoConta.valueOf( this.tipoDeConta.name))
 }

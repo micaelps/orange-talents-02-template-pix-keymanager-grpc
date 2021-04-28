@@ -69,7 +69,7 @@ internal class NovaChavePixServiceTest(
 
 
         val response = grpcClient.cria(NovaChavePixRequest.newBuilder()
-                .setClientID(CLIENTE_ID.toString())
+                .setClienteID(CLIENTE_ID.toString())
             .setTipoDeChave(TipoDeChave.CPF)
             .setChave(request.key)
             .setTipoDeConta(TipoDeConta.CONTA_CORRENTE)
@@ -92,7 +92,7 @@ internal class NovaChavePixServiceTest(
 
         val thrown = assertThrows<StatusRuntimeException> {
             grpcClient.cria(NovaChavePixRequest.newBuilder()
-                .setClientID(CLIENTE_ID.toString())
+                .setClienteID(CLIENTE_ID.toString())
                 .setTipoDeChave(TipoDeChave.CPF)
                 .setChave("17092692008")
                 .setTipoDeConta(TipoDeConta.CONTA_CORRENTE)
@@ -109,7 +109,7 @@ internal class NovaChavePixServiceTest(
 
         val thrown = assertThrows<StatusRuntimeException> {
             grpcClient.cria(NovaChavePixRequest.newBuilder()
-                .setClientID(CLIENTE_ID.toString())
+                .setClienteID(CLIENTE_ID.toString())
                 .setTipoDeChave(TipoDeChave.CPF)
                 .setChave("17092692008...")
                 .setTipoDeConta(TipoDeConta.CONTA_CORRENTE)
@@ -135,7 +135,7 @@ internal class NovaChavePixServiceTest(
 
 
         val response = grpcClient.cria(NovaChavePixRequest.newBuilder()
-            .setClientID(CLIENTE_ID.toString())
+            .setClienteID(CLIENTE_ID.toString())
             .setTipoDeChave(TipoDeChave.EMAIL)
             .setChave(request.key)
             .setTipoDeConta(TipoDeConta.CONTA_CORRENTE)
@@ -152,7 +152,7 @@ internal class NovaChavePixServiceTest(
 
         val thrown = assertThrows<StatusRuntimeException> {
             grpcClient.cria(NovaChavePixRequest.newBuilder()
-                .setClientID(CLIENTE_ID.toString())
+                .setClienteID(CLIENTE_ID.toString())
                 .setTipoDeChave(TipoDeChave.EMAIL)
                 .setChave("email.comm")
                 .setTipoDeConta(TipoDeConta.CONTA_CORRENTE)
@@ -171,7 +171,7 @@ internal class NovaChavePixServiceTest(
 
         val thrown = assertThrows<StatusRuntimeException> {
             grpcClient.cria(NovaChavePixRequest.newBuilder()
-                .setClientID(CLIENTE_ID.toString())
+                .setClienteID(CLIENTE_ID.toString())
                 .setTipoDeChave(TipoDeChave.CELULAR)
                 .setChave("8690-8766")
                 .setTipoDeConta(TipoDeConta.CONTA_CORRENTE)
@@ -198,7 +198,7 @@ internal class NovaChavePixServiceTest(
 
 
         val response = grpcClient.cria(NovaChavePixRequest.newBuilder()
-            .setClientID(CLIENTE_ID.toString())
+            .setClienteID(CLIENTE_ID.toString())
             .setTipoDeChave(TipoDeChave.CELULAR)
             .setChave(request.key)
             .setTipoDeConta(TipoDeConta.CONTA_CORRENTE)
@@ -219,7 +219,7 @@ internal class NovaChavePixServiceTest(
 
         val thrown = assertThrows<StatusRuntimeException> {
             grpcClient.cria(NovaChavePixRequest.newBuilder()
-                .setClientID(CLIENTE_ID.toString())
+                .setClienteID(CLIENTE_ID.toString())
                 .setTipoDeChave(TipoDeChave.CELULAR)
                 .setChave("+5585988714077")
                 .setTipoDeConta(TipoDeConta.CONTA_CORRENTE)

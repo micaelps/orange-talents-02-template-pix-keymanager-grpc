@@ -4,12 +4,14 @@ option java_multiple_files = true;
 option java_outer_classname = "KeyManagerGrpc";
 package br.com.zup.edu;
 
+
+//CRIA
 service CriaNovaChavePixService {
   rpc cria(NovaChavePixRequest) returns (NovaChavePixResponse) {}
 }
 
 message NovaChavePixRequest {
-  string clientID         = 1;
+  string clienteID         = 1;
   TipoDeChave tipoDeChave = 2;
   string chave            = 3;
   TipoDeConta tipoDeConta = 4;
@@ -30,6 +32,22 @@ enum TipoDeConta {
 }
 
 message NovaChavePixResponse {
-  string clientId = 1;
+  string clienteId = 1;
   string pixId = 2;
+}
+
+//DELETA
+
+service DeletaNovaChavePixService{
+  rpc deleta(DeletaChavePixRequest) returns (DeletaChavePixResponse){}
+}
+
+message DeletaChavePixRequest{
+  string clienteId = 1;
+  string pixId     = 2;
+}
+
+message DeletaChavePixResponse{
+  string clienteId = 1;
+  string pixId     = 2;
 }
