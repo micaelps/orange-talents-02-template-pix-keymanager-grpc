@@ -23,7 +23,5 @@ class DeletaChavePixEndpoint(val deleteService: DeletaChavePixService): DeletaNo
             .build())
         responseObserver.onCompleted()
 
-
-
     }
 }

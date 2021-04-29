@@ -3,7 +3,7 @@ syntax = "proto3";
 option java_multiple_files = true;
 option java_outer_classname = "KeyManagerGrpc";
 package br.com.zup.edu;
-
+import "google/protobuf/timestamp.proto";
 
 //CRIA
 service CriaNovaChavePixService {
@@ -50,4 +50,28 @@ message DeletaChavePixRequest{
 message DeletaChavePixResponse{
   string clienteId = 1;
   string pixId     = 2;
+}
+
+service ListaChavePixService {
+
+  rpc lista(ListaChavesPixRequest) returns (ListaChavesPixResponse) {}
+
+}
+
+message ListaChavesPixRequest {
+  string clienteId = 1;
+}
+
+message ListaChavesPixResponse {
+
+  message ChavePix {
+    string pixId            = 1;
+    TipoDeChave tipo        = 2;
+    string chave            = 3;
+    TipoDeConta tipoDeConta = 4;
+    google.protobuf.Timestamp criadaEm = 5;
+  }
+
+  string clienteId         = 1;
+  repeated ChavePix chaves = 2;
 }
