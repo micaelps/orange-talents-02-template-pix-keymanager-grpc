@@ -23,6 +23,6 @@ interface BcbClient {
         produces = [MediaType.APPLICATION_XML],
         consumes = [MediaType.APPLICATION_XML]
     )
-    fun delete(@PathVariable key: String, @Body request: DeletaPixKeyRequest): HttpResponse<DeletaPixKeyResponse>
+    fun delete(@PathVariable key: String, @Body requestChaveBcb: DeletaChavePixBcbRequest): HttpResponse<DeletaPixKeyResponse>
 
 }

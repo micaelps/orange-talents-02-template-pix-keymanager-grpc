@@ -1,9 +1,8 @@
 package br.com.zup.edu.deleta
 
 import br.com.zup.edu.clients.bcb.BcbClient
-import br.com.zup.edu.clients.bcb.DeletaPixKeyRequest
-import br.com.zup.edu.compartilhado.ChavePix
-import br.com.zup.edu.compartilhado.ChavePixNaoEncontradaException
+import br.com.zup.edu.clients.bcb.DeletaChavePixBcbRequest
+import br.com.zup.edu.exceptions.ChavePixNaoEncontradaException
 import br.com.zup.edu.compartilhado.ChavePixRepository
 import io.micronaut.http.HttpStatus
 import io.micronaut.validation.Validated
@@ -28,12 +27,12 @@ class DeletaChavePixService(@Inject val repository: ChavePixRepository,
         val uuidClienteId = UUID.fromString(clienteId)
 
         val chavePix = repository.findByIdAndClienteId(uuidPixId, uuidClienteId)
-            .orElseThrow{ChavePixNaoEncontradaException("Cliente não encontrado")}
+        .orElseThrow{ ChavePixNaoEncontradaException("Cliente não encontrado") }
 
         val bcbResponse = with(chavePix){
             repository.delete(this)
-            val request = DeletaPixKeyRequest(chave)
-            bcbClient.delete(key = chave, request = request)
+            val request = DeletaChavePixBcbRequest(chave)
+            bcbClient.delete(key = chave, requestChaveBcb = request)
         }
 
         if (bcbResponse.status != HttpStatus.OK) {
